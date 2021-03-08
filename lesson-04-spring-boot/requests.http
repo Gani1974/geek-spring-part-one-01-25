@@ -48,3 +48,15 @@ GET http://localhost:8080/spring-mvc-app/api/v1/product/all
 ###
 
 DELETE http://localhost:8080/spring-mvc-app/user/5
+
+###
+
+POST http://89.108.88.94:8080/spring-mvc-app/api/v1/cart/1/user/2/product?qty=3
+
+###
+
+GET http://89.108.88.94:8080/spring-mvc-app/api/v1/cart/1/user
+
+###
+
+POST http://89.108.88.94:8080/spring-mvc-app/api/v1/cart/remove/1/user/2/product?qty=1

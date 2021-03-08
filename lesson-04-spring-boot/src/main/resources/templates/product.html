@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head th:replace="fragments/head.html :: head"/>
 
@@ -9,7 +9,7 @@
 
 <div class="container">
     <div class="row py-2">
-        <div class="col-12">
+        <div class="col-12" sec:authorize="hasAnyRole('ADMIN','SUPER_ADMIN')">
             <a class="btn btn-primary" th:href="@{/product/new}">Add Product</a>
         </div>
 
@@ -40,7 +40,7 @@
                     <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Title', 'name')"/>
                     <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Description', 'description')"/>
                     <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Price', 'price')"/>
-                    <th scope="col">Actions</th>
+                    <th sec:authorize="hasAnyRole('ADMIN','SUPER_ADMIN')" scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,7 +51,7 @@
                         900, RAM 8GB DDR3
                     </td>
                     <td th:text="${product.price}">$1000</td>
-                    <td>
+                    <td sec:authorize="hasAnyRole('ADMIN','SUPER_ADMIN')">
                         <a class="btn btn-success" th:href="@{/product/{id}(id = ${product.id})}">
                             <i class="fas fa-edit"></i>
                         </a>
